@@ -4,7 +4,7 @@
 * Implementation is single threaded.
 * Doesn't support file locking mechanism. Hence database can be accessed by more than one processes at a time.
 * Doesn't support TTL feature.
-* Doesn't strictly follow the ACID properties of DBMS.
+* Doesn't strictly follow the ACID properties of DBMS transactions.
 
 # Usage guide
 
@@ -40,7 +40,7 @@ public String readData(String db, String path, String key) throws DataStoreExcep
 public boolean deleteData(String db, String path, String key) throws DataStoreException;
 ```
 
-* Below is a sample program that uses this custom DBMS:
+* Below is a sample program that uses this custom DBMS. This "Test.java" file is located in the parent directory of "freshworks" folder
 
 ```
 import java.util.*;
