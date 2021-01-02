@@ -39,3 +39,26 @@ public String readData(String db, String path, String key) throws DataStoreExcep
 //Returns true if successful else false or throws custom Exception
 public boolean deleteData(String db, String path, String key) throws DataStoreException;
 ```
+
+* Below is a sample program that uses this custom DBMS:
+
+```
+import java.util.*;
+import java.io.*;
+import freshworks.*;
+
+class Test {
+  public static void main(String[] args) {
+    DataStore d = DataStore.getInstance();
+    try {
+      d.createDataStore("MyDatabase", "C:\\Users\\rajan\\Desktop");
+      d.createData("MyDatabase", "C:\\Users\\rajan\\Desktop", "def", "{\"num\":100, \"is_vip\":true, \"name\":\"foo\"}");
+      d.createData("MyDatabase", "C:\\Users\\rajan\\Desktop", "abc", "{\"num\":100, \"is_vip\":true, \"name\":\"foo\"}");
+      System.out.println(d.readData("MyDatabase", "C:\\Users\\rajan\\Desktop", "def"));
+      d.deleteData("MyDatabase", "C:\\Users\\rajan\\Desktop", "abc");
+    } catch(DataStoreException e) {
+      System.out.println(e.getMessage());
+    }
+  }
+}
+```
